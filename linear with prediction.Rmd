@@ -52,19 +52,86 @@ model1 <- lm(SIMS~ARM,data=data)
 summary.lm(model1)
 ```
 
+
+
 ```{r}
 plot(SIMS~ARM,data=data)
 abline(model1, col = 'red')
 ```
 
 
-for an increase of 1 in arm strength, sim score ivreases by 0.0545
+for an increase of 1 in arm strength, sim score increases by 0.0545
 
 
 ```{r}
-Model1= lm(SIMS~ARM, data = data)
-print(summary(Model1))
+newdata = data.frame (ARM = 88, GRIP = 94)
+predict.lm(model1, newdata,
+interval='prediction')
 ```
 
 
 
+
+
+## Model2 
+
+Find an equation that expresses SIMS as a function of GRIP.
+
+
+## Results
+
+
+## Graphical Results
+
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+
+
+
+
+As grip strength increases sims score increases.
+
+
+### Numerical Results
+
+```{r}
+cor(data$GRIP, data$SIMS)
+```
+This is a positive correlation.
+
+### Inference
+
+```{r}
+model2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model2)
+```
+
+
+
+
+```{r}
+plot(SIMS~GRIP,data=data)
+abline(model2, col = 'red')
+```
+
+
+For an increase in 1 Grip, Sim score increases 0.0454
+
+
+```{r}
+newdata = data.frame (ARM = 88, GRIP = 94)
+predict.lm(model2, newdata,
+interval='prediction')
+```
+
+
+## Model 3
+
+find an equation that expresses SIMS as a function of ARM+GRIP.
+
+## Results
+
+## Numerical Results
+
+### Inference
